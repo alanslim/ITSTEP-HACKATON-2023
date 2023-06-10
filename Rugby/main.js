@@ -2,9 +2,11 @@
 // import {Player} from "player.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
+import { Background } from './layer.js'
 
 
-window.addEventListener('load', () => {
+let startGameBtn = document.getElementById('startGame');
+startGameBtn.addEventListener('click', () => {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
@@ -14,15 +16,18 @@ window.addEventListener('load', () => {
         constructor(width, height){
             this.width = width;
             this.height = height;
+            this.background = new Background(this);
+            this.time = 0;
         }
 
         update(deltaTime) {
             this.time += deltaTime;
+            this.background.update();
     
         }
 
         draw(context) {
-            
+            this.background.draw(context);
         }
     }
 
