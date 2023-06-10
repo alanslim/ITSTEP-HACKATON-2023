@@ -5,6 +5,7 @@
 import { Background } from './layer.js'
 
 
+<<<<<<< Updated upstream
 let startGameBtn = document.querySelector('#startGame');
 startGameBtn.addEventListener('click', () => {
 
@@ -14,6 +15,10 @@ startGameBtn.addEventListener('click', () => {
     canv.id = 'canvas';
     document.body.append(canv);
 
+=======
+let startGameBtn = document.getElementById('startGame');
+document.addEventListener('load', () => {
+>>>>>>> Stashed changes
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
@@ -30,8 +35,13 @@ startGameBtn.addEventListener('click', () => {
         }
 
         update(deltaTime) {
+<<<<<<< Updated upstream
             this.time += deltaTime;
             // this.background.update();
+=======
+            // this.time += deltaTime;
+            this.background.update();
+>>>>>>> Stashed changes
     
         }
 
@@ -51,7 +61,7 @@ startGameBtn.addEventListener('click', () => {
         ctx.clearRect(0, 0, canvas.width, canvas. height);
         // game.update(deltaTime);
         game.draw(ctx);
-        // if (!game.gameOver) requestAnimationFrame(animate) ;
+        if (!game.gameOver) requestAnimationFrame(animate) ;
     }
     animate(0);  
 

@@ -19,11 +19,11 @@
     display: none;
 }
 
-body{
+/* body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 #startGame{
     border: none;
