@@ -30,6 +30,7 @@ startGameBtn.addEventListener('click', () => {
             this.background = new Background();
             this.ui = new UI(this);
             this.playerOne = 1;
+            this.playerTwo = 2;
             this.score = 0;
             this.time = 0;
         }
