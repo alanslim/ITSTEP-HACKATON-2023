@@ -1,14 +1,14 @@
 
-import {Player} from "player.js";
-import {Unit} from "unit.js";
-import * as PIXI from 'pixi.js';
+// import {Player} from "player.js";
+// import {Unit} from "unit.js";
+// import * as PIXI from 'pixi.js';
 
 
 window.addEventListener('load', () => {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.offset;
-    canvas.height = window. innerHeight - 15;
+    canvas.width = 800;
+    canvas.height = 500;
 
     class Game {
         constructor(width, height){
