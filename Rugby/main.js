@@ -25,13 +25,13 @@ startGameBtn.addEventListener('click', () => {
         constructor(width, height){
             this.width = width;
             this.height = height;
-            this.background = new Background(this);
+            this.background = new Background();
             this.time = 0;
         }
 
         update(deltaTime) {
             this.time += deltaTime;
-            this.background.update();
+            // this.background.update();
     
         }
 
@@ -49,7 +49,7 @@ startGameBtn.addEventListener('click', () => {
         //console.log(deltaTime);
         lastTime = timeStamp;
         ctx.clearRect(0, 0, canvas.width, canvas. height);
-        game.update(deltaTime);
+        // game.update(deltaTime);
         game.draw(ctx);
         // if (!game.gameOver) requestAnimationFrame(animate) ;
     }
