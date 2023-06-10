@@ -5,12 +5,21 @@
 import { Background } from './layer.js'
 
 
-let startGameBtn = document.getElementById('startGame');
+let startGameBtn = document.querySelector('#startGame');
 startGameBtn.addEventListener('click', () => {
+
+    startGameBtn.style.display='none';
+
+    let canv =document.createElement('canvas');
+    canv.id = 'canvas';
+    document.body.append(canv);
+
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
     canvas.height = 500;
+
+    console.log(startGameBtn);
 
     class Game {
         constructor(width, height){
