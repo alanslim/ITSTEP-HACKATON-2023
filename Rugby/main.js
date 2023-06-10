@@ -1,6 +1,7 @@
 
 import {Player} from "player.js";
 import {Unit} from "unit.js";
+import * as PIXI from 'pixi.js';
 
 
 window.addEventListener('load', () => {
