@@ -1,7 +1,7 @@
 export class Unit {
-    constructor(speed, haste, throwpower){
+    constructor(speed, haste, direction){
         this.speed = speed;
         this.haste = haste;
-        this.throwpower = throwpower;
+        this.direction = direction;
     }
 }
