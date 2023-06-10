@@ -5,7 +5,6 @@
 import { Background } from './layer.js'
 
 
-<<<<<<< Updated upstream
 let startGameBtn = document.querySelector('#startGame');
 startGameBtn.addEventListener('click', () => {
 
@@ -15,10 +14,7 @@ startGameBtn.addEventListener('click', () => {
     canv.id = 'canvas';
     document.body.append(canv);
 
-=======
-let startGameBtn = document.getElementById('startGame');
-document.addEventListener('load', () => {
->>>>>>> Stashed changes
+
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
@@ -34,16 +30,11 @@ document.addEventListener('load', () => {
             this.time = 0;
         }
 
-        update(deltaTime) {
-<<<<<<< Updated upstream
-            this.time += deltaTime;
-            // this.background.update();
-=======
-            // this.time += deltaTime;
-            this.background.update();
->>>>>>> Stashed changes
+        // update(deltaTime) {
+        //     this.time += deltaTime;
+        //     // this.background.update();
     
-        }
+        // }
 
         draw(context) {
             this.background.draw(context);
