@@ -41,6 +41,8 @@ startGameBtn.addEventListener('click', () => {
             this.scoreTwo = 0;
             //Отсчет времени игры, сделаю ограничение в 30 сек к примеру
             this.time = 0;
+            //Это максимальное время игры. Пока 50 сек
+            this.maxTime = 50000;
             //для определения закончена ли игра
             this.gameOver = false;
         }
@@ -50,8 +52,9 @@ startGameBtn.addEventListener('click', () => {
         update(deltaTime) {
             //Так мы изменяем счет в игре
             this.time += deltaTime;
-            // this.background.update();
-            
+            // Когда время игры будет 50 сек то игра окончена...
+            if(this.time > this.maxTime) this.gameOver = true;
+
     
         }
 
@@ -81,7 +84,8 @@ startGameBtn.addEventListener('click', () => {
         //Пока игра не закончена будет идти плавная перерисовака при помощи функции requestAnimationFrame
         if (!game.gameOver) requestAnimationFrame(animate) ;
         // Когда игра будет окончена можно удалить эту игру, gameOver будет true когда закончится время
-        else if (game.gameOver) 
+        //ТОЛЬКО Я НЕ ЗНАЮ КАК СДЕЛАТЬ ЧТОБЫ ИГРА УБИЛА САМА СЕБЯ? НАПИСАТЬ ИГРА РАВНА НУЛЛ ВЕРНО??????????????????????????????????????????????????????
+        else if (game.gameOver) game = null;
     }
     animate(0);  
 
