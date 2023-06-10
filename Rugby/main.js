@@ -2,7 +2,8 @@
 // import {Player} from "player.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
-import { Background } from './layer.js'
+import { Background } from './layer.js';
+import { UI } from './ui.js'
 
 
 let startGameBtn = document.querySelector('#startGame');
@@ -27,17 +28,21 @@ startGameBtn.addEventListener('click', () => {
             this.width = width;
             this.height = height;
             this.background = new Background();
+            this.ui = new UI(this);
+            this.playerOne = 1;
+            this.score = 0;
             this.time = 0;
         }
 
-        // update(deltaTime) {
-        //     this.time += deltaTime;
-        //     // this.background.update();
+        update(deltaTime) {
+            this.time += deltaTime;
+            // this.background.update();
     
-        // }
+        }
 
         draw(context) {
             this.background.draw(context);
+            this.ui.draw(context);
         }
     }
 
@@ -50,7 +55,7 @@ startGameBtn.addEventListener('click', () => {
         //console.log(deltaTime);
         lastTime = timeStamp;
         ctx.clearRect(0, 0, canvas.width, canvas. height);
-        // game.update(deltaTime);
+        game.update(deltaTime);
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate) ;
     }
