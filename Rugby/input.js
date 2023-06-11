@@ -1,42 +1,37 @@
 export class InputHandler {
-    constructor (game) {
+    constructor (game, host, port) {
         this.game = game;
-        this.
-        this.keys = [];
+        this.host = host;
+        this.port = port;
+        this.key = '';
 
-        GET http://<this_host>:<port>/action?unit=N  - запрос действий от игрока, N - номер активного юнита.
-        // Ответ: код статуса 200 + json-строка. Пример:
-        // {select: "auto"} или {"unit": 4, "action": {"type": "run", "angle": 45, "force": 100}}
-        
-        // Контроллер...
-        let controls = {
-            'KeyA': {pressed: false, direction: 'left'},
-            'KeyS': {pressed: false, direction: 'down'},
-            'KeyD': {pressed: false, direction: 'right'},
-            'KeyW': {pressed: false, direction: 'up'}
-        }
+        setInterval(() => {
+            fetch(`http://${this.host}:${this.port}/action?unit=N`)
+              .then(response => response.json())
+              .then(response => {
+                console.log(response);
+                this.unit = response[unit];
+                if(response.action[angle] === 0){
+                    this.key = 'up';
+                }else if(response.action[angle] === 180){
+                    this.key = 'down';
+                }else if(response.action[angle] === 90){
+                    this.key = 'right';
+                }else if(response.action[angle] === 270){
+                    this.key = 'left';
+                }else if(response.action[type] === 'catch'){
+                    this.key = 'catch';
+                }else if(response.action[type] === 'throw'){
+                    this.key = 'throw';
+                }
+                
+              });
+          }, 20000);
+          
 
-        window.onkeydown = (ev) => {
-            if (controls.hasOwnProperty(ev.code)) {
-                const key = controls[ev.code];
-        
-                if (key.pressed) return;
-                key.pressed = true;
+            // GET http://<this_host>:<port>/action?unit=N  - запрос действий от игрока, N - номер активного юнита.
+            // Ответ: код статуса 200 + json-строка. Пример:
+            // {select: "auto"} или {"unit": 4, "action": {"type": "run", "angle": 45, "force": 100}}
 
-                // Проверяем, не нажаты ли одновременно другие кнопки
-                const simultaneousKeysPressed = Object.values(controls).some(control => control.pressed && control.direction !== key.direction);
-                // Если есть одновременно нажатые кнопки, ничего не делаем
-                if (simultaneousKeysPressed) return;        
-                // Иначе
-                this.keys.push(key.direction)
-            }
-        }
-        
-        window.onkeyup = (ev) => {
-            if (controls.hasOwnProperty(ev.code)) {
-                controls[ev.code].pressed = false;
-                this.keys.splice(this.keys.indexOf(e.key), 1);
-            }
-        }
     }
 }
