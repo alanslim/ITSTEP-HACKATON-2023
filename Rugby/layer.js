@@ -1,6 +1,6 @@
 
 export class Background {
-    constructor(){
+    constructor (){
         this.width = 800;
         this.height = 500;
         this.image = document.getElementById('layer1');
@@ -8,8 +8,20 @@ export class Background {
         this.y = 0;
     }
 
-    draw(context) {
-        context.drawImage(this.image, this.x, this.y, this.width, this.height);
-        context.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
+    draw (ctx) {
+        ctx.drawImage(
+            this.image, 
+            this.x, 
+            this.y, 
+            this.width, 
+            this.height
+        );
+        ctx.drawImage(
+            this.image, 
+            this.x + this.width, 
+            this.y, 
+            this.width, 
+            this.height
+        );
     }
 }

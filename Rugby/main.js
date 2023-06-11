@@ -1,17 +1,19 @@
-
 // import {Player} from "player.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
 import { Background } from './layer.js';
 import { UI } from './ui.js'
 
+export function random (max, min) {
+    return Math.trunc(Math.random() * (max - min) + min);
+}
 
 let startGameBtn = document.querySelector('#startGame');
 startGameBtn.addEventListener('click', () => {
 
     startGameBtn.style.display='none';
 
-    let canv =document.createElement('canvas');
+    let canv = document.createElement('canvas');
     canv.id = 'canvas';
     document.body.append(canv);
 
@@ -21,7 +23,13 @@ startGameBtn.addEventListener('click', () => {
     canvas.width = 800;
     canvas.height = 500;
 
-    console.log(startGameBtn);
+    const playerSkin = [
+        './sprites/type1.png',
+        './sprites/type2.png',
+        './sprites/type3.png',
+        './sprites/type4.png',
+        './sprites/type5.png'
+    ];
 
     class Game {
         constructor(width, height){
@@ -46,19 +54,19 @@ startGameBtn.addEventListener('click', () => {
             this.ui.draw(context);
         }
     }
-
-
+    
     const game = new Game(canvas.width, canvas.height);
     let lastTime = 0;
+    console.log('game',game)
 
     function animate(timeStamp) {
         const deltaTime = timeStamp - lastTime;
-        //console.log(deltaTime);
         lastTime = timeStamp;
-        ctx.clearRect(0, 0, canvas.width, canvas. height);
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update(deltaTime);
         game.draw(ctx);
-        if (!game.gameOver) requestAnimationFrame(animate) ;
+        if (!game.gameOver) requestAnimationFrame(animate);
     }
     animate(0);  
 

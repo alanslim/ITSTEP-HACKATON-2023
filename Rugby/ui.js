@@ -5,6 +5,7 @@ export class UI {
         this.fontFamily = 'Monospace';
         this.livesImage = document.getElementById('heart');
     }
+
     draw(context) {
         context.save();
         context.font = this.fontSize + 'px ' + this.fontFamily;
