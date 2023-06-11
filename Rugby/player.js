@@ -17,12 +17,24 @@ export class Player {
         // this.vy = 0; //vertical speed
         this.frameX = 0;
         this.frameY = frameY;
+        this.maxFrame = 3;
+        this.frameInterval = 1000/ this.fps;
+        this.frameTimer = 0;
         // this.collision = new Animate();
     }
 
-    update (input) {
+    update (input, deltaTime) {
         this.checkCollision();
         this.currentState.handlerInput(input);
+
+        //sprite animation
+        if(this.frameTimer > this.frameInterval){
+            this.frameTimer = 0;
+            if (this.frameX < this.maxFrame) this.frameX++;
+            else this.frameX = 0;
+        } else {
+            this.frameTimer += deltaTime;
+        }
     }
 
     draw (ctx, x, y) {

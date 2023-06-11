@@ -1,7 +1,12 @@
 export class InputHandler {
     constructor (game) {
         this.game = game;
+        this.
         this.keys = [];
+
+        GET http://<this_host>:<port>/action?unit=N  - запрос действий от игрока, N - номер активного юнита.
+        // Ответ: код статуса 200 + json-строка. Пример:
+        // {select: "auto"} или {"unit": 4, "action": {"type": "run", "angle": 45, "force": 100}}
         
         // Контроллер...
         let controls = {

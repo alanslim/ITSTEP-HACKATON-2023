@@ -1,4 +1,5 @@
 import {Player} from "./player.js";
+import { InputHandler } from './input.js'
 
 export class Unit {
     constructor (playerId, x, frameY) {
@@ -13,9 +14,11 @@ export class Unit {
         this.player4 = new Player(playerId, frameY);
         this.player5 = new Player(playerId, frameY);
         this.player6 = new Player(playerId, frameY);
+        this.unit  = [this.player2, this.player1, this.player3, this.player4, this.player5, this.player6]
     }
 
     update(deltaTime){
+
 
     }
 
