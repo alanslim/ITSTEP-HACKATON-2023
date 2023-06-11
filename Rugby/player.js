@@ -7,16 +7,17 @@ export class Player {
     x = 0;    // текущая x координата на холсте
     y = 0;    // текущая y координата на холсте
 
-    constructor (sprite, game) {
-        this.sprite = sprite;
-        this.game = game;
-        this.width = 100;
-        this.height = 90;
-        this.x = 0;
-        this.vy = 0; //vertical speed
+    constructor (imageId, frameY) {
+        this.image = document.getElementById(imageId);
+        // this.game = game;
+        this.width = 32;
+        this.height = 32;
+        // this.x = 0;
+        // this.y = 50;
+        // this.vy = 0; //vertical speed
         this.frameX = 0;
-        this.frameY = 0;
-        this.collision = new Animate();
+        this.frameY = frameY;
+        // this.collision = new Animate();
     }
 
     update (input) {
@@ -24,41 +25,41 @@ export class Player {
         this.currentState.handlerInput(input);
     }
 
-    draw (ctx) {
+    draw (ctx, x, y) {
         ctx.drawImage(
             this.image, 
             this.frameX * this.width, 
             this.frameY * this.height, 
             this.width, 
             this.height, 
-            this.x, 
-            this.y, 
+            x, 
+            y, 
             this.width, 
             this.height
         );
     };
 
-    checkCollision() {
-        if(
-            enemy.x < this.x + this.width &&
-            enemy.x + enemy.width > this.x &&
-            enemy.y < this.y + this.height &&
-            enemy.y + enemy.height > this.y
-        ) {
-            //collision detected
-            enemy.markedForDeletion = true;
+    // checkCollision() {
+    //     if(
+    //         enemy.x < this.x + this.width &&
+    //         enemy.x + enemy.width > this.x &&
+    //         enemy.y < this.y + this.height &&
+    //         enemy.y + enemy.height > this.y
+    //     ) {
+    //         //collision detected
+    //         enemy.markedForDeletion = true;
 
-            if(
-                this.currentState === this.states[4] || 
-                this.currentState === this.states[5]
-            ) {
-                this.game.score++;
-            }else {
-                this.setState(6, 0);
-            }
+    //         if(
+    //             this.currentState === this.states[4] || 
+    //             this.currentState === this.states[5]
+    //         ) {
+    //             this.game.score++;
+    //         }else {
+    //             this.setState(6, 0);
+    //         }
             
-        } 
-    }
+    //     } 
+    // }
 }
 
 export class Moves {

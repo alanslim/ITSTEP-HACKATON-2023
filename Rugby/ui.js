@@ -12,11 +12,11 @@ export class UI {
         context.textAlign = 'left';
         context.fillStyle = 'black';
         //first player
-        context.fillText( `Player ${this.game.playerOne}`, 20, 35);
+        context.fillText( `Player ${1}`, 20, 35);
        // first player score
        context.fillText('Score: ' + this.game.scoreOne, 20, 60);
        //second player
-       context.fillText( `Player ${this.game.playerTwo}`, 640, 35);
+       context.fillText( `Player ${2}`, 640, 35);
        // second player score
        context.fillText('Score: ' + this.game.scoreTwo, 640, 60);
        //timers

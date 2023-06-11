@@ -1,4 +1,4 @@
-import {Player} from "./player.js";
+import { Unit } from "./unit.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
 import { Background } from './background.js';
@@ -40,9 +40,9 @@ startGameBtn.addEventListener('click', () => {
             this.ui = new UI(this);               //Устанавливаю интерфейс UI через класс UI и передаю в него игру
             //Игрок первый, временно обозначен как 1, будут передаваться данные с сервера, образуется через класс Player
             //по итогу: this.playerOne = new Player(image.type1 к примеру);   
-            this.playerOne = 1;  
+            this.playerOne = new Unit('playerOne', 180, 2);  
             //по итогу: this.playerTwo = new Player(image.type2 к примеру);                  
-            this.playerTwo = 2;
+            this.playerTwo = new Unit('playerTwo', 535, 1);
             // Будет считывать очки игрока 1
             this.scoreOne = 0;
             // Будет считывать очки игрока 2
@@ -68,6 +68,8 @@ startGameBtn.addEventListener('click', () => {
         draw(context) {
             this.background.draw(context);
             this.ui.draw(context);
+            this.playerOne.draw(context);
+            this.playerTwo.draw(context);
         }
     }
     
@@ -85,6 +87,10 @@ startGameBtn.addEventListener('click', () => {
         game.update(deltaTime);
         game.draw(ctx);
         if (!game.gameOver) requestAnimationFrame(animate);
+        else if(game.gameOver) {
+            game = null;
+            startGameBtn.style.display='block';
+        }
     }
     animate(0);  
-})
+});
