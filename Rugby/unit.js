@@ -17,7 +17,10 @@ export class Unit {
         this.unit  = [this.player2, this.player1, this.player3, this.player4, this.player5, this.player6]
     }
 
-    update(deltaTime){
+    update(input, deltaTime){
+        for(let player of this.unit){
+            player.update(input, deltaTime)
+        }
 
 
     }

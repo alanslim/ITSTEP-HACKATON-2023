@@ -20,11 +20,13 @@ export class Player {
         this.maxFrame = 3;
         this.frameInterval = 1000/ this.fps;
         this.frameTimer = 0;
-        // this.collision = new Animate();
+        this.states = [new Sitting(this.game), new Running(this.game),
+                       new Jumping(this.game), new Falling(this.game), 
+                       new Rolling(this.game), new Diving(this.game)];
     }
 
     update (input, deltaTime) {
-        this.checkCollision();
+        // this.checkCollision();
         this.currentState.handlerInput(input);
 
         //sprite animation
@@ -50,6 +52,11 @@ export class Player {
             this.height
         );
     };
+
+    setState(state) {
+        this.currentState = this.states[state];
+        this.currentState.enter();
+    }
 
     // checkCollision() {
     //     if(
