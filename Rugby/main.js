@@ -99,4 +99,7 @@ startGameBtn.addEventListener('click', () => {
         }
     }
     animate(0);  
+
 });
+
+
