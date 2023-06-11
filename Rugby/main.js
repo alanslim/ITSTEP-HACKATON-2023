@@ -2,6 +2,7 @@ import { Unit } from "./unit.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
 import { Background } from './background.js';
+import { InputHandler } from './input.js';
 import { UI } from './ui.js'
 
 export function random (max, min) {
@@ -34,15 +35,17 @@ startGameBtn.addEventListener('click', () => {
     //объединяющий класс для игры, принимает ширину и высоту канваса
     class Game {
         constructor(width, height){
+            this.hostOne =
             this.width = width;
             this.height = height;
             this.background = new Background();  //Устанавливаю бэграунд через класс Background
             this.ui = new UI(this);               //Устанавливаю интерфейс UI через класс UI и передаю в него игру
+            this.input = new InputHandler(this);
             //Игрок первый, временно обозначен как 1, будут передаваться данные с сервера, образуется через класс Player
             //по итогу: this.playerOne = new Player(image.type1 к примеру);   
-            this.playerOne = new Unit('playerOne', 180, 2);  
+            this.playerOne = new Unit(this, 'playerOne', 180, 2);  
             //по итогу: this.playerTwo = new Player(image.type2 к примеру);                  
-            this.playerTwo = new Unit('playerTwo', 535, 1);
+            this.playerTwo = new Unit(this, 'playerTwo', 535, 1);
             // Будет считывать очки игрока 1
             this.scoreOne = 0;
             // Будет считывать очки игрока 2
@@ -62,6 +65,9 @@ startGameBtn.addEventListener('click', () => {
             this.time += deltaTime;
             // Когда время игры будет 50 сек то игра окончена...
             if(this.time > this.maxTime) this.gameOver = true;
+
+            this.playerOne.update(this.input.keys, deltaTime);
+            this.playerTwo.update(this.input.keys, deltaTime);
         }
 
         //Метод для отрисовки игры и всех принятых классов в игре

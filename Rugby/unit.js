@@ -2,18 +2,19 @@ import {Player} from "./player.js";
 import { InputHandler } from './input.js'
 
 export class Unit {
-    constructor (playerId, x, frameY) {
+    constructor (game, playerId, x, frameY) {
+        // this.game = game;
         // this.speed = speed;
         // this.haste = haste;
         // this.direction = direction;
         this.x = x;
         // this.playerFrameY = frameY;
-        this.player1 = new Player(playerId, frameY);
-        this.player2 = new Player(playerId, frameY);
-        this.player3 = new Player(playerId, frameY);
-        this.player4 = new Player(playerId, frameY);
-        this.player5 = new Player(playerId, frameY);
-        this.player6 = new Player(playerId, frameY);
+        this.player1 = new Player(game, playerId, frameY);
+        this.player2 = new Player(game, playerId, frameY);
+        this.player3 = new Player(game, playerId, frameY);
+        this.player4 = new Player(game, playerId, frameY);
+        this.player5 = new Player(game, playerId, frameY);
+        this.player6 = new Player(game, playerId, frameY);
         this.unit  = [this.player2, this.player1, this.player3, this.player4, this.player5, this.player6]
     }
 
