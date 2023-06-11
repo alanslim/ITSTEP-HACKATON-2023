@@ -1,7 +1,7 @@
-// import {Player} from "player.js";
+import {Player} from "./player.js";
 // import {Unit} from "unit.js";
 // import * as PIXI from 'pixi.js';
-import { Background } from './layer.js';
+import { Background } from './background.js';
 import { UI } from './ui.js'
 
 export function random (max, min) {
@@ -62,8 +62,6 @@ startGameBtn.addEventListener('click', () => {
             this.time += deltaTime;
             // Когда время игры будет 50 сек то игра окончена...
             if(this.time > this.maxTime) this.gameOver = true;
-
-    
         }
 
         //Метод для отрисовки игры и всех принятых классов в игре
@@ -89,5 +87,4 @@ startGameBtn.addEventListener('click', () => {
         if (!game.gameOver) requestAnimationFrame(animate);
     }
     animate(0);  
-
 })
